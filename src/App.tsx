@@ -1,12 +1,13 @@
-import { Todolist } from "./components/TodoList";
+import { Todolist } from "./components/TodoList/TodoList";
 import { TodoStoreProvider } from "./store/todos";
+import * as styles from "./style";
 
 export function App() {
   return (
-    <div className="parant">
+    <styles.parant>
       <TodoStoreProvider>
         <Todolist />
       </TodoStoreProvider>
-    </div>
+    </styles.parant>
   );
 }

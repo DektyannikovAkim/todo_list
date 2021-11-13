@@ -1,27 +1,24 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
-import { TodoStoreContext } from "../store/todos";
+import { TodoStoreContext } from "../../store/todos";
+import * as styles from "./style";
 
 export const InputArea = observer(() => {
   const context = useContext(TodoStoreContext);
 
   return (
-    <div className="wrapper-for-formCreateTodo">
-      <form
-        className="formCreateTodo"
-        onSubmit={context.submitHandler}
-      >
-        <input
+    <styles.wrapperForForm>
+      <styles.formCreateTodo onSubmit={context.submitHandler}>
+        <styles.inputForCreateTodo
           type="text"
           required
-          className="input-for-createTodo"
           value={context.newTodoValue}
           onChange={context.handleNewValueChange}
         />
-        <button className="btn-addTodo" type="submit">
+        <styles.submit type="submit">
           Add todo
-        </button>
-      </form>
-    </div>
+        </styles.submit>
+      </styles.formCreateTodo>
+    </styles.wrapperForForm>
   );
 });

@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
-import ContentEditable from "react-contenteditable";
-import { TodoModel } from "../moduls/todo";
-import { TodoStoreContext } from "../store/todos";
+import { TodoModel } from "../../../moduls/todo";
+import { TodoStoreContext } from "../../../store/todos";
+import * as styles from "./style";
 
 interface Props {
   todo: TodoModel;
@@ -17,36 +17,30 @@ export const TodoItem = observer((props: Props) => {
     minute: "numeric",
   });
   return (
-    <div className="wrapper-for-todo">
-      <div className="element-wrapper">
-        <input
+    <styles.wrapperForTodo>
+      <styles.checkboxWrapper>
+        <styles.checkbox
           type="checkbox"
-          className="checkbox"
           id={props.todo.id.toString()}
           checked={props.todo.completed}
           onChange={() => {
             context.completeTodo(props.todo);
           }}
         />
-        <label htmlFor={props.todo.id.toString()}></label>
-      </div>
+        <styles.label htmlFor={props.todo.id.toString()} />
+      </styles.checkboxWrapper>
 
-      <ContentEditable
+      <styles.content
         html={props.todo.title}
-        className={
-          props.todo.completed ? "title-todoItem complete" : "title-todoItem"
-        }
+        aria-checked={props.todo.completed}
         onChange={(e) => context.changeTodoTitle(e.target.value, props.todo)}
-        onBlur={()=> context.handleBlur(props.todo)}
+        onBlur={() => context.handleBlur(props.todo)}
       />
 
-      <span className="date-info">{formatedDate}</span>
-      <button
-        className="close-btn"
-        onClick={() => context.removeTodo(props.todo.id)}
-      >
+      <styles.date>{formatedDate}</styles.date>
+      <styles.close onClick={() => context.removeTodo(props.todo.id)}>
         &#215;
-      </button>
-    </div>
+      </styles.close>
+    </styles.wrapperForTodo>
   );
 });
