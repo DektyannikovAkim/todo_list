@@ -2,7 +2,6 @@ import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 import { TodoModel } from "../../../moduls/todo";
 import { TodoStoreContext } from "../../../store/todos";
-import { CheckBox } from "./CheckBox";
 import * as styles from "./style";
 
 interface Props {
@@ -20,21 +19,15 @@ export const TodoItem = observer((props: Props) => {
   return (
     <styles.WrapperForTodo>
       <styles.CheckboxWrapper>
-        <CheckBox
-          selected={props.todo.completed}
-          onPress={() => {
-            context.completeTodo(props.todo);
-          }}
-        ></CheckBox>
-        {/* <styles.Checkbox
+        <styles.Checkbox
           type="checkbox"
           id={props.todo.id.toString()}
           checked={props.todo.completed}
           onChange={() => {
             context.completeTodo(props.todo);
           }}
-        /> */}
-        {/* <styles.Label htmlFor={props.todo.id.toString()} /> */}
+        />
+        <styles.Label htmlFor={props.todo.id.toString()} />
       </styles.CheckboxWrapper>
 
       <styles.Content
@@ -45,10 +38,9 @@ export const TodoItem = observer((props: Props) => {
       />
 
       <styles.Date>{formatedDate}</styles.Date>
-      <styles.Close
-        onPress={() => context.removeTodo(props.todo.id)}
-        title="&#215;"
-      />
+      <styles.Close onClick={() => context.removeTodo(props.todo.id)}>
+        &#215;
+      </styles.Close>
     </styles.WrapperForTodo>
   );
 });

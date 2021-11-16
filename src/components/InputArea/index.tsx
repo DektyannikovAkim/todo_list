@@ -8,20 +8,20 @@ export const InputArea = observer(() => {
   const context = useContext(TodoStoreContext);
 
   return (
-    <styles.wrapperForForm>
-      <styles.formCreateTodo onSubmit={context.submitHandler}>
-        <styles.inputForCreateTodo
+    <styles.WrapperForForm>
+      <styles.FormCreateTodo onSubmit={context.submitHandler}>
+        <styles.InputForCreateTodo
           type="text"
           readOnly={context.loading}
           required
           value={context.newTodoValue}
           onChange={context.handleNewValueChange}
         />
-        {!context.loading ? <styles.submit type="submit">
+        {!context.loading ? <styles.Submit type="submit">
           Add todo
-        </styles.submit> : <Loader/>}
+        </styles.Submit> : <Loader/>}
         
-      </styles.formCreateTodo>
-    </styles.wrapperForForm>
+      </styles.FormCreateTodo>
+    </styles.WrapperForForm>
   );
 });

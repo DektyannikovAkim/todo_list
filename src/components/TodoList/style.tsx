@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const header = styled.h1`
+export const Header = styled.h1`
   color: #ff9121;
 `;
 
-export const todoList = styled.div`
+export const TodoList = styled.div`
   color: #fff;
 `;

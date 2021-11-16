@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const wrapperForForm = styled.div`
+export const WrapperForForm = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 25px;
 `;
 
-export const formCreateTodo = styled.form`
+export const FormCreateTodo = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,17 +14,17 @@ export const formCreateTodo = styled.form`
   border: 1px solid #0a0a0a;
 `;
 
-export const inputForCreateTodo = styled.input`
+export const InputForCreateTodo = styled.input`
   outline: none;
 `;
 
-export const submit = styled.button`
+export const Submit = styled.button`
   background-color: inherit;
   color: #ff9121;
   border: none;
 `;
 
-export const wrapperForTodo = styled.div`
+export const WrapperForTodo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -36,6 +36,6 @@ export const wrapperForTodo = styled.div`
   }
 `;
 
-export const elementWrapper = styled.div`
+export const ElementWrapper = styled.div`
   padding: 0px 10px;
 `;

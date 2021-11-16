@@ -47,7 +47,7 @@ export class Todo {
 
   submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    if (this.newTodoValue.trim()) {
+    if (this.newTodoValue.trim() && !this.loading) {
       this.createTodo();
     }
   };

@@ -1,7 +1,7 @@
 import ContentEditable from "react-contenteditable";
-import styled from "styled-components/native";
+import styled from "styled-components";
 
-export const WrapperForTodo = styled.View`
+export const WrapperForTodo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -13,47 +13,47 @@ export const WrapperForTodo = styled.View`
   }
 `;
 
-export const CheckboxWrapper = styled.View`
+export const CheckboxWrapper = styled.div`
   padding: 0px 10px;
 `;
 
-// export const Label = styled.L`
-//   position: relative;
-//   width: 21px;
-//   display: block;
-//   height: 21px;
-//   cursor: pointer;
-//   border: 2px solid #f4a505;
-//   border-radius: 100%;
+export const Label = styled.label`
+  position: relative;
+  width: 21px;
+  display: block;
+  height: 21px;
+  cursor: pointer;
+  border: 2px solid #f4a505;
+  border-radius: 100%;
 
-//   :after {
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     border-radius: 100%;
-//     transition: all 0.1s;
-//     transform: scale(0.8);
-//   `;
+  :after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    transition: all 0.1s;
+    transform: scale(0.8);
+  `;
 
-// export const Checkbox = styled.input`
-//   position: absolute;
-//   z-index: -1;
-//   opacity: 0;
+export const Checkbox = styled.input`
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
 
-//   :checked+${Label}:after {
-//     background: #F4A505;
-//   `;
+  :checked+${Label}:after {
+    background: #F4A505;
+  `;
 
-export const Date = styled.Text`
+export const Date = styled.span`
   opacity: 0.5;
   flex-shrink: 0;
   margin-left: 5px;
 `;
 
-export const Close = styled.Button`
+export const Close = styled.button`
   width: 25px;
   height: 25px;
   outline: none;
