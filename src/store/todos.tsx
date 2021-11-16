@@ -1,12 +1,13 @@
 import { makeAutoObservable } from "mobx";
 import React, { createContext, FC } from "react";
+import { getCurrentDateAPI } from "../api";
 import { TodoModel } from "../moduls/todo";
 
 const storageKey = "todoList";
 
 export class Todo {
   todos: TodoModel[] = [];
-
+  loading: boolean = false;
   newTodoValue: string = "";
 
   constructor() {
@@ -32,7 +33,9 @@ export class Todo {
   };
 
   handleBlur(todo: TodoModel) {
-    let findTodo = this.todos.find((el) => el.title === todo.title && el.id !== todo.id);
+    let findTodo = this.todos.find(
+      (el) => el.title === todo.title && el.id !== todo.id
+    );
     if (findTodo) {
       this.removeTodo(findTodo.id);
     }
@@ -49,18 +52,29 @@ export class Todo {
     }
   };
 
+  handleTodoCreation(date: Date) {
+    this.todos.push({
+      title: this.newTodoValue,
+      id: Date.now(),
+      completed: false,
+      dateOfCreation: date,
+    });
+    this.newTodoValue = "";
+  }
+
   createTodo() {
     if (!this.checkForUniqueness(this.newTodoValue)) {
-      this.todos = this.todos.concat([
-        {
-          title: this.newTodoValue,
-          id: Date.now(),
-          completed: false,
-          dateOfCreation: new Date(),
-        },
-      ]);
+      this.setLoading();
+      getCurrentDateAPI().then((date) => {
+        if (date) {
+          this.handleTodoCreation(date);
+        }
+      }).finally(()=> this.setLoading());
     }
-    this.newTodoValue = "";
+  }
+
+  setLoading() {
+    this.loading = !this.loading;
   }
 
   completeTodo(todo: TodoModel) {

@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 import { TodoStoreContext } from "../../store/todos";
 import { InputArea } from "../InputArea/InputArea";
-import { TodoItem } from "./Item/TodoItem";
+import { TodoItem } from "./Item";
 import * as styles from "./style";
 
 export const Todolist = observer(() => {

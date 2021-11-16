@@ -24,17 +24,18 @@ export const submit = styled.button`
   border: none;
 `;
 
-export const wrapperForTodo = styled.div `
-display: flex;
-justify-content: space-between;
-align-items: flex-start;
-border-bottom: 1px solid #0A0A0A;
-padding: 10px 10px;
+export const wrapperForTodo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #0a0a0a;
+  padding: 10px 10px;
 
-:first-child {
-    border-top: 1px solid #0A0A0A;
-}`
+  :first-child {
+    border-top: 1px solid #0a0a0a;
+  }
+`;
 
 export const elementWrapper = styled.div`
-padding: 0px 10px;
-`
+  padding: 0px 10px;
+`;

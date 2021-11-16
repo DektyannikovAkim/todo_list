@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 import { TodoStoreContext } from "../../store/todos";
+import { Loader } from "../Loader";
 import * as styles from "./style";
 
 export const InputArea = observer(() => {
@@ -11,13 +12,15 @@ export const InputArea = observer(() => {
       <styles.formCreateTodo onSubmit={context.submitHandler}>
         <styles.inputForCreateTodo
           type="text"
+          readOnly={context.loading}
           required
           value={context.newTodoValue}
           onChange={context.handleNewValueChange}
         />
-        <styles.submit type="submit">
+        {!context.loading ? <styles.submit type="submit">
           Add todo
-        </styles.submit>
+        </styles.submit> : <Loader/>}
+        
       </styles.formCreateTodo>
     </styles.wrapperForForm>
   );
